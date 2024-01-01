@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+</head>
+<body>
+    <h1>Clicker Game!</h1>
+    <p>note: there is no afk or autoclicker detection because that ruins the fun. so go all out.</p>
+    <h4 id="Count"></h4>
+    <p id="cps"></p>
+    <button title="Click the button for computers" onclick="addClicks()">Click Me!</button>
+    <br><br>
+    <h3>Upgrades</h3>
+    <button id="cursor" onclick="upgrade('cursor')"">$15</button>
+    <br>
+    <button id="2x" onclick="upgrade(1800, 2)">$1800</button>
+    <br><br>
+    <h3>Danger Ranger</h3>
+    <button title="Reset all progress" onclick="resetData()" style="background-color: red;">Reset</button>
+    <script src="clicker.js"></script>
+</body>
+</html>
