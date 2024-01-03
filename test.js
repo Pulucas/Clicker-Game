@@ -11,3 +11,31 @@ function SetTo5(varString) {
 console.log(Math.ceil(SetTo5(17.25)))
 
 console.log(8%1)
+
+let time = 1
+let newInterval = setInterval(() => {
+  console.log(time, "seconds have passed")
+  time += 1
+}, 1000)
+
+function setIntervals() {
+
+console.log("interval cleared")
+
+time = 1
+
+clearInterval(newInterval)
+
+newInterval = setInterval(() => {
+  console.log(time, "seconds have passed")
+  time += 1
+}, 1000)
+
+}
+
+setTimeout(() => setIntervals(), 2300)
+
+// Having trouble when cps is set to 0
+console.log("1/0 =", 1/0)
+// Apparently "1/0 = Infinity" to JS
+// https://stackoverflow.com/questions/53129908/why-is-1-0-infinity-and-1-0-infinity

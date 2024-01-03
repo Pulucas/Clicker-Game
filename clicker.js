@@ -2,20 +2,19 @@ let cps = Number(localStorage.getItem("cps"))
 let clicks = Number(localStorage.getItem("clicks"));
 
 if (localStorage.getItem("cps") === null) {
-  cps = 1;   
+  cps = 0;   
 }
 
 function setClicks() {
-  document.getElementById("Count").innerText = "Computers: " + Math.round(clicks);
+  document.getElementById("Count").innerText = "Clicks: " + clicks;
   localStorage.setItem("clicks", clicks);
 };
-setClicks();
 
 function setCPS() {
   document.getElementById("cps").innerText = "CPS: " + cps + "x";
   localStorage.setItem("cps", cps)
+  updateCPS()
 };
-setCPS();
 
 let upgrades = {
   cursorPrice: Number(localStorage.getItem("cursorPrice")),
@@ -32,15 +31,21 @@ function setUpgrades(value) {
 setUpgrades("cursor")
 
 function addClicks() {
-  clicks += cps;
+  clicks += 1;
   setClicks()
 };
 
-function addCPS() {
-  //setInterval(1, 1/cps)
-  //then we need to cancel setInterval() when cps value updates
-  //so the trigger will be in setCPS()
-  //then we need to make a new setInterval() with the new CPS values
+// CPS Interval
+let CPSInterval = setInterval(() => {console.log("Infinity Seconds Have Passed, You Have Conquered The Redundant SetInterval()\n\
+This means the game is broken btw, try refreshing the page")}, Infinity)
+
+function updateCPS() {
+  clearInterval(CPSInterval)
+  CPSInterval = setInterval(() => {
+    if (cps <= 0) return;
+    clicks += 1
+    setClicks()
+  }, 1000/cps)
 }
 
 function upgrade(value) {
@@ -62,11 +67,19 @@ function resetData() {
   // Reset all data in localstorage
   const resetProgress = confirm("are you sure you want to reset all your progress?");
   if (resetProgress) {
+    
     localStorage.clear();
+
+    // Clicks
     clicks = 0;
     setClicks();
-    cps = 1;
+
+    // CPS
+    cps = 0;
     setCPS();
+    updateCPS()
+
+    // Upgrades
     upgrades.cursorPrice = 15
     setUpgrades("cursor")
   };
@@ -74,3 +87,10 @@ function resetData() {
 
 // Figure out a way to store a users clicks in storage.
 // preferable server side storage so they can't change it.
+// For github readers, i'll probably use localStorage for a long time because it's easy to change
+// variables and test as I update the code
+
+// These run when the site loads
+// I've put them down here so I don't have to deal with error "Can't access x before initialization"
+setClicks();
+setCPS();
