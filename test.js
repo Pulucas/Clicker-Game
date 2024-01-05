@@ -39,3 +39,11 @@ setTimeout(() => setIntervals(), 2300)
 console.log("1/0 =", 1/0)
 // Apparently "1/0 = Infinity" to JS
 // https://stackoverflow.com/questions/53129908/why-is-1-0-infinity-and-1-0-infinity
+
+let newIntervall = null
+clearInterval(newIntervall)
+
+// console.log(setInterval(() => {null}, 400))
+
+console.log(1/3 === 0.3)
+console.log(2.400000000000001%1)
