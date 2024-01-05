@@ -11,7 +11,11 @@ function setClicks() {
 };
 
 function setCPS() {
-  document.getElementById("cps").innerText = "CPS: " + cps + "x";
+  if (cps % 1 === 0) {
+    document.getElementById("cps").innerText = "CPS: " + cps + "x";
+  } else {
+    document.getElementById("cps").innerText = "CPS: " + cps.toFixed(1) + "x";
+  }
   localStorage.setItem("cps", cps)
   updateCPS()
 };
@@ -36,7 +40,7 @@ function addClicks() {
 };
 
 // CPS Interval
-let CPSInterval = setInterval(() => {console.log("Infinity Seconds Have Passed, You Have Conquered The Redundant SetInterval()\n\
+let CPSInterval = setInterval(() => {alert("Infinity Seconds Have Passed, You Have Conquered The Redundant SetInterval()\n\
 This means the game is broken btw, try refreshing the page")}, Infinity)
 
 function updateCPS() {
