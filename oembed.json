@@ -1,7 +1,0 @@
-{
-  "version": "1.0",
-  "type": "rich",
-  "provider_name": "Clicker Game",
-  "provider_url": "https://clicker.lucash.art",
-  "html": "<iframe width='600' height='400' src='https://example.com/embedded-content' frameborder='0' allowfullscreen></iframe>"
-}
