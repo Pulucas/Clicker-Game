@@ -98,3 +98,19 @@ function resetData() {
 // I've put them down here so I don't have to deal with error "Can't access x before initialization"
 setClicks();
 setCPS();
+
+function fetchOEmbed() {
+  // Replace "oembed.json" with the path to your JSON file
+  fetch("oembed.json")
+    .then(response => response.json())
+    .then(data => {
+      if (data.html) {
+        document.getElementById('embed-container').innerHTML = data.html;
+      } else {
+        console.error('Failed to retrieve oEmbed data');
+      }
+    })
+    .catch(error => console.error('Error fetching oEmbed:', error));
+}
+
+fetchOEmbed()
